@@ -1,27 +1,31 @@
-var publidDir = __dirname + '/public';
 module.exports = {
-  entry: [
-    './src/index.jsx'
-  ],
+  entry: {
+    app: "./src/index.jsx"
+  },
   output: {
-    path: publidDir,
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: __dirname + '/public/js',
+    filename: "[name].js"
   },
+    devServer: {
+    contentBase: __dirname + '/public',
+    port: 8080,
+    publicPath: '/js/'
+  },
+  devtool: "eval-source-map",
+  mode: 'development',
   module: {
-    loaders: [{
+    rules: [{
+      test: /\.js$/,
+      enforce: "pre",
       exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['react', 'es2015']
-      }
-    }]
-  },
-  resolve: {
-    extensions: ['.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: publidDir
+      loader: "eslint-loader"
+    }, {
+      test: /\.css$/,
+      loader: ["style-loader","css-loader"]
+    }, {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+     }]
   }
 };
