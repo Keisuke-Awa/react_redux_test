@@ -1,31 +1,36 @@
+const path = require('path');
+
+const publicDir = path.join(__dirname, '/public');
+
 module.exports = {
   entry: {
-    app: "./src/index.jsx"
+    app: './src/index.jsx',
   },
   output: {
-    path: __dirname + '/public/js',
-    filename: "[name].js"
+    path: publicDir,
+    publicPath: '/',
+    filename: 'bundle.js',
   },
-    devServer: {
-    contentBase: __dirname + '/public',
-    port: 8080,
-    publicPath: '/js/'
-  },
-  devtool: "eval-source-map",
+  // devServer: {
+  //   contentBase: publicDir,
+  //   port: 8080,
+  //   publicPath: '/js/'
+  // },
+  devtool: 'eval-source-map',
   mode: 'development',
   module: {
     rules: [{
       test: /\.js$/,
-      enforce: "pre",
+      enforce: 'pre',
       exclude: /node_modules/,
-      loader: "eslint-loader"
+      loader: 'eslint-loader',
     }, {
       test: /\.css$/,
-      loader: ["style-loader","css-loader"]
+      loader: ['style-loader', 'css-loader'],
     }, {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
-     }]
-  }
+      loader: 'babel-loader',
+    }],
+  },
 };
