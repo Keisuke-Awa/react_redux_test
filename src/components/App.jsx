@@ -6,7 +6,7 @@ import React from 'react';
 //   Switch,
 // } from 'react-router-dom';
 
-import Products from '../containers/Products';
+import Products from '../containers/ProductsList';
 
 const App = () => (
   <div>

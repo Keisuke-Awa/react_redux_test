@@ -1,8 +1,8 @@
 {
   "products": [
-    { "id": 1, "product": "犬" },
-    { "id": 2, "product": "猫" },
-    { "id": 3, "product": "猿" },
-    { "id": 4, "product": "雉" }
+    { "id": 1, "name": "犬" },
+    { "id": 2, "name": "猫" },
+    { "id": 3, "name": "猿" },
+    { "id": 4, "name": "雉" }
   ]
 }
