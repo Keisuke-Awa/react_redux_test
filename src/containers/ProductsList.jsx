@@ -3,21 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ProductsListItem from '../components/ProductsListItem';
-import { getProducts } from '../actions/index';
-
+import { getProducts } from '../actions/';
 
 class ProductsList extends Component {
   componentDidMount() {
-    this.props.dispatch(getProducts());
-    console.log(this.props.products);
+    const { dispatch } = this.props;
+    dispatch(getProducts());
   }
 
   render() {
+    const {
+      products,
+    } = this.props;
+
     return (
       <div>
         <ul>
-          {this.props.products.map(product => (
-            <ProductsListItem productId={product.id} productName={product.name} />
+          {products.map(product => (
+            <ProductsListItem key={product.id} product={product} />
           ))}
         </ul>
       </div>
@@ -36,13 +39,23 @@ ProductsList.defaultProps = {
 
 // const mapStateToProps = state => ({ products: state.products.products });
 
+// const mapStateToProps = (state) => {
+//   const { products } = state;
+//   // const length = products.length;
+//   // console.log(length);
+//   console.log(products.length);
+//   const currentState = products[products.length - 1]; // 一番新しいstateを取り出す
+//   console.log(currentState);
+//   return { products: currentState.items }; // 描画するのに必要なのはとりあえずitemsだけなのでitemsだけ返す
+// };
+
 const mapStateToProps = (state) => {
   const length = state.products.length;
-  const currentState = state.products[length - 1]; // 一番新しいstateを取り出す
-  console.log(currentState.products);
-  return { products: currentState.products }; // 描画するのに必要なのはとりあえずitemsだけなのでitemsだけ返す
+  const currentState = state.posts[length - 1]; // 一番新しいstateを取り出す
+  return { posts: currentState.items }; // 描画するのに必要なのはとりあえずitemsだけなのでitemsだけ返す
 };
 
 export default connect(
   mapStateToProps,
+  { getProducts },
 )(ProductsList);

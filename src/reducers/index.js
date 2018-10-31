@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   isFetching: false,
-  products: [],
+  items: [],
 };
 
 const products = (state = [initialState], action) => {
@@ -12,7 +12,7 @@ const products = (state = [initialState], action) => {
         ...state,
         {
           isFetching: true,
-          products: [],
+          items: [],
         },
       ];
     case 'GET_PRODUCTS_SUCCESS':
@@ -20,7 +20,7 @@ const products = (state = [initialState], action) => {
         ...state,
         {
           isFetching: false,
-          products: action.products,
+          items: action.products,
           lastUpdated: action.receivedAt,
         },
       ];

@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProductsListItem = ({ productId, productName }) => (
-  <li key={productId}>
-    { productName }
+const ProductsListItem = ({ product }) => (
+  <li>
+    { product.name }
   </li>
 );
 
 ProductsListItem.propTypes = {
-  productId: PropTypes.number.isRequired,
-  productName: PropTypes.string.isRequired,
+  product: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ProductsListItem;
