@@ -6,9 +6,11 @@ import React from 'react';
 //   Switch,
 // } from 'react-router-dom';
 
+import Products from './Products';
+
 const App = () => (
   <div>
-    <h1>hello</h1>
+    <Products />
   </div>
 );
 
