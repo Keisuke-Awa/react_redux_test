@@ -39,7 +39,7 @@ ProductsList.defaultProps = {
 const mapStateToProps = (state) => {
   const { products } = state;
   const currentState = state.products[products.length - 1]; // 一番新しいstateを取り出す
-  return { products: currentState.items }; // 描画するのに必要なのはとりあえずitemsだけなのでitemsだけ返す
+  return { products: currentState.productArray }; // 描画するのに必要なのはとりあえずitemsだけなのでitemsだけ返す
 };
 
 export default connect(
