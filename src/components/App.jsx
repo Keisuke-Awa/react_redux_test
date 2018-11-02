@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 // import {
 //   BrowserRouter as Router,
 //   Route,
@@ -7,15 +6,10 @@ import Button from '@material-ui/core/Button';
 //   Switch,
 // } from 'react-router-dom';
 
-import Products from '../containers/ProductsList';
+import ProductsContainer from '../containers/ProductsContainer';
 
 const App = () => (
-  <div>
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-    <Products />
-  </div>
+  <ProductsContainer />
 );
 
 export default App;
