@@ -49,7 +49,6 @@ const postProductFailure = error => dispatch => dispatch({
 
 export const postProduct = (product, products) => (dispatch) => {
   dispatch(postProductRequest());
-  console.log(product);
   axios.post(`${devDomain}/products`, { product })
     .then((res) => {
       const newProduct = res.data;
