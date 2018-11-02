@@ -1,37 +1,33 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-  isFetching: false,
-  productArray: [],
+  products: {
+    isFetching: false,
+    productArray: [],
+  },
 };
 
-const products = (state = [initialState], action) => {
+const products = (state = initialState.products, action) => {
   switch (action.type) {
     case 'GET_PRODUCTS_REQUEST':
-      return [
+      return {
         ...state,
-        {
-          isFetching: true,
-          productArray: [],
-        },
-      ];
+        isFetching: true,
+        productArray: [],
+      };
     case 'GET_PRODUCTS_SUCCESS':
-      return [
+      return {
         ...state,
-        {
-          isFetching: false,
-          productArray: action.products,
-          lastUpdated: action.receivedAt,
-        },
-      ];
+        isFetching: false,
+        productArray: action.products,
+        lastUpdated: action.receivedAt,
+      };
     case 'GET_PRODUCTS_FAILURE':
-      return [
+      return {
         ...state,
-        {
-          isFetching: false,
-          error: action.error,
-        },
-      ];
+        isFetching: false,
+        error: action.error,
+      };
     default:
       return state;
   }

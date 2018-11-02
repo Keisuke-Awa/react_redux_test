@@ -36,13 +36,21 @@ ProductsList.defaultProps = {
   products: [],
 };
 
-const mapStateToProps = (state) => {
-  const { products } = state;
-  const currentState = state.products[products.length - 1]; // 一番新しいstateを取り出す
-  return { products: currentState.productArray }; // 描画するのに必要なのはとりあえずitemsだけなのでitemsだけ返す
-};
+// const mapStateToProps = (state) => {
+//   console.log(state);
+//   const { products } = state;
+//   console.log(products);
+//   const currentState = state.products[products.length - 1]; // 一番新しいstateを取り出す
+//   return { products: currentState.productArray }; // 描画するのに必要なのはとりあえずitemsだけなのでitemsだけ返す
+// };
+
+// const mapStateToProps = state => ({
+//   products: state.products.productArray,
+// });
 
 export default connect(
-  mapStateToProps,
+  state => ({
+    products: state.products.productArray,
+  }),
   { getProducts },
 )(ProductsList);
