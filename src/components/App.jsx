@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 // import {
 //   BrowserRouter as Router,
 //   Route,
@@ -10,10 +11,11 @@ import Products from '../containers/ProductsList';
 
 const App = () => (
   <div>
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
     <Products />
   </div>
 );
 
-// setStateはstateを更新し、renderを再度呼ぶ機能をもつ
-// ツーウェイバインディング
 export default App;
